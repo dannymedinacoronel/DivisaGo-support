@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Licencia · Divisa&amp;Go</title>
+<meta name="description" content="Licencia de uso de Divisa&amp;Go: software propietario, gratuito para uso personal y profesional.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+:root {
+  --ink: #2b1f33; --muted: #6f6178; --pink: #ff2e88; --violet: #8a2be2; --blue: #2b6cff; --yellow: #ffe14d; --soft: #fff5fa; --line: #f0e1ec;
+  --grad: linear-gradient(135deg, #ff2e88 0%, #8a2be2 55%, #2b6cff 100%);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+body { margin: 0; color: var(--ink); background: #fff; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; line-height: 1.6; }
+html[lang="es"] .en, html[lang="en"] .es { display: none !important; }
+a { color: var(--violet); }
+img, video { max-width: 100%; height: auto; display: block; }
+.wrap { width: min(1120px, 100% - 40px); margin: 0 auto; }
+
+/* Navegación */
+nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(255, 255, 255, .82); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; gap: 22px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+.brand b { color: var(--pink); }
+nav a.link { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+nav a.link:hover { color: var(--violet); }
+.lang { display: flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang button { border: 0; padding: 6px 14px; font: inherit; font-weight: 800; font-size: 13px; cursor: pointer; color: var(--muted); background: #fff; }
+.lang button[aria-pressed="true"] { color: #fff; background: var(--grad); }
+@media (max-width: 760px) { nav a.link { display: none; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; color: #fff; background: var(--grad); padding: 72px 0 96px; }
+.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; }
+.hero::before { width: 520px; height: 520px; right: -140px; top: -180px; background: rgba(255, 225, 77, .5); }
+.hero::after { width: 420px; height: 420px; left: -150px; bottom: -200px; background: rgba(0, 229, 255, .38); }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.hero .wrap > * { min-width: 0; }
+@media (max-width: 880px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-shot { transform: none; } }
+.pill { display: inline-block; padding: 7px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .5); font-weight: 700; font-size: 14px; }
+h1 { margin: 18px 0 14px; font-size: clamp(38px, 6vw, 68px); line-height: 1.04; font-weight: 900; text-shadow: 0 6px 30px rgba(40, 0, 80, .35); }
+h1 em { font-style: normal; color: var(--yellow); }
+.lead { margin: 0 0 28px; font-size: clamp(18px, 2.2vw, 23px); opacity: .96; max-width: 34em; }
+.btns { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn { display: inline-block; padding: 15px 28px; border-radius: 999px; font-weight: 800; font-size: 17px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { color: #3a1466; background: var(--yellow); box-shadow: 0 10px 26px rgba(255, 190, 0, .45); }
+.btn.ghost { color: #fff; border: 2px solid rgba(255, 255, 255, .7); }
+.hero-shot { border-radius: 22px; box-shadow: 0 40px 90px rgba(30, 0, 70, .55), 0 0 0 8px rgba(255, 255, 255, .9); transform: rotate(1.5deg); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.chips > span { padding: 8px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .45); font-weight: 700; font-size: 15px; }
+
+/* Secciones */
+section { padding: 84px 0; }
+section.alt { background: var(--soft); }
+.kicker { color: var(--pink); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
+h2 { margin: 8px 0 14px; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; font-weight: 900; }
+h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sub { margin: 0 auto 40px; color: var(--muted); font-size: 18px; max-width: 40em; }
+.center { text-align: center; } .center .sub { margin-inline: auto; }
+
+/* Vídeo */
+.video-card { border-radius: 24px; overflow: hidden; background: #1a1022; box-shadow: 0 30px 80px rgba(80, 20, 120, .35); border: 6px solid #fff; outline: 2px solid var(--line); }
+.video-card video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.vlang { display: flex; justify-content: center; margin-bottom: 20px; }
+
+/* Funciones */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
+.card { padding: 26px; border-radius: 20px; background: #fff; border: 2px solid var(--line); transition: transform .2s, box-shadow .2s, border-color .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(138, 43, 226, .15); border-color: #e6b8ff; }
+.ico { width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 16px; font-size: 28px; background: var(--grad); box-shadow: 0 8px 20px rgba(138, 43, 226, .3); }
+.card h3 { margin: 0 0 6px; font-size: 20px; }
+.card p { margin: 0; color: var(--muted); font-size: 16px; }
+
+/* Galería */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+.gallery button { padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
+.gallery img { width: 100%; border-radius: 18px; box-shadow: 0 14px 36px rgba(60, 20, 100, .22); border: 4px solid #fff; transition: transform .2s; }
+.gallery button:hover img { transform: scale(1.025); }
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 24px; background: rgba(20, 8, 30, .86); cursor: zoom-out; }
+.lightbox.open { display: grid; }
+.lightbox img { max-height: 92vh; border-radius: 14px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); }
+
+/* Soporte */
+.support { color: #fff; background: var(--grad); text-align: center; position: relative; overflow: hidden; }
+.support::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -120px; top: -160px; background: rgba(255, 225, 77, .45); }
+.support .wrap { position: relative; }
+.support p { font-size: 19px; max-width: 36em; margin: 0 auto 26px; opacity: .96; }
+.support small { display: block; margin-top: 14px; opacity: .85; }
+
+/* FAQ */
+details { border: 2px solid var(--line); border-radius: 16px; background: #fff; margin-bottom: 12px; padding: 4px 20px; }
+details[open] { border-color: #e6b8ff; }
+summary { padding: 14px 0; font-weight: 800; font-size: 18px; cursor: pointer; }
+details p { margin: 0 0 16px; color: var(--muted); }
+
+/* Privacidad y más apps */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+.panel { padding: 30px; border-radius: 22px; border: 2px solid var(--line); background: #fff; }
+.panel h3 { margin: 0 0 10px; font-size: 24px; }
+.panel p { color: var(--muted); }
+.more { background: linear-gradient(135deg, #fff4c2, #ffe1f0); border-color: #ffd1e6; }
+footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+.foot-links { display: flex; justify-content: center; gap: 22px; margin-bottom: 12px; font-weight: 700; }
+.foot-links a { color: var(--violet); text-decoration: none; }
+.foot-links a:hover { text-decoration: underline; }
+.page-hero { padding: 64px 0 72px; }
+.legal h2 { margin: 0 0 4px; font-size: clamp(24px, 3.4vw, 34px); }
+.legal h3 { margin: 26px 0 6px; font-size: 17px; color: var(--violet); }
+.legal p, .legal li { color: #4a3d52; font-size: 15px; }
+.legal ul { padding-left: 22px; }
+.legal .muted { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+.legal a { word-break: break-word; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt=""><span>Divisa<b>&amp;Go</b></span></a>
+    <a class="link" href="index.html"><span class="es">Inicio</span><span class="en">Home</span></a>
+    <a class="link" href="soporte.html"><span class="es">Soporte</span><span class="en">Support</span></a>
+    <a class="link" href="licencia.html"><span class="es">Licencia</span><span class="en">License</span></a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="support page-hero">
+  <div class="wrap">
+    <div class="kicker" style="color:#ffe14d"><span class="es">Licencia</span><span class="en">License</span></div>
+    <h2><span class="es">Software <em style="-webkit-text-fill-color:#ffe14d;color:#ffe14d">propietario</em></span><span class="en">Proprietary <em style="-webkit-text-fill-color:#ffe14d;color:#ffe14d">software</em></span></h2>
+    <p><span class="es">Divisa&amp;Go es gratis para usar, pero no es software libre: no se puede copiar, modificar ni redistribuir sin permiso.</span><span class="en">Divisa&amp;Go is free to use, but it is not free software: it may not be copied, modified or redistributed without permission.</span></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap legal" style="max-width:820px">
+    <div class="es">
+<h2>DIVISA&amp;GO — LICENCIA DE USO PROPIETARIA</h2>
+<p class="muted">Copyright (c) 2026 Demkor Consultants. Todos los derechos reservados.</p>
+<p>Divisa&amp;Go (la &quot;Aplicación&quot;) incluye la extensión para Chrome, la aplicación de escritorio para Windows, su instalador, el sitio web y todos los textos, imágenes, iconos, vídeos y código fuente asociados. La Aplicación NO es software libre ni de código abierto.</p>
+<h3>1. TITULARIDAD</h3>
+<p>La Aplicación y todos los derechos de propiedad intelectual e industrial sobre ella pertenecen a Demkor Consultants (desarrollador principal: Danny Medina Coronel). Esta licencia no transmite ninguna propiedad; solo concede un derecho de uso limitado.</p>
+<h3>2. LICENCIA CONCEDIDA</h3>
+<p>Se te concede una licencia personal, no exclusiva, intransferible, no sublicenciable, revocable y gratuita para instalar y usar la Aplicación, tal y como se distribuye oficialmente, para tu uso personal o para el uso interno de tu actividad profesional.</p>
+<h3>3. RESTRICCIONES</h3>
+<p>Sin autorización previa y por escrito del titular, no puedes:</p>
+<ul><li>copiar, reproducir o redistribuir la Aplicación, en todo o en parte, salvo la copia necesaria para usarla y una copia de seguridad personal;</li><li>vender, alquilar, prestar, sublicenciar, publicar en otras tiendas o sitios web, o poner a disposición de terceros la Aplicación o sus instaladores;</li><li>modificar, adaptar, traducir o crear obras derivadas a partir de la Aplicación;</li><li>descompilar, desensamblar o aplicar ingeniería inversa, salvo en la medida en que la ley aplicable lo permita expresamente y no pueda excluirse por contrato;</li><li>eliminar o alterar los avisos de autoría, marca o propiedad;</li><li>usar el nombre &quot;Divisa&amp;Go&quot;, su logotipo o sus imágenes para identificar otros productos o servicios, ni sugerir una afiliación con el titular;</li><li>usar la Aplicación para fines ilícitos o para extraer, de forma automatizada y masiva, datos de las fuentes de cotización que consulta.</li></ul>
+<h3>4. COMPONENTES DE TERCEROS Y FUENTES DE DATOS</h3>
+<p>La Aplicación incluye componentes de terceros (por ejemplo Electron y Chromium), que se rigen por sus propias licencias, incluidas en el instalador. Las cotizaciones proceden de servicios de terceros (bancos centrales y proveedores de datos) con sus propias condiciones de uso, que debes respetar. El titular no es propietario ni responsable de esos servicios.</p>
+<h3>5. SIN GARANTÍA</h3>
+<p>La Aplicación se ofrece &quot;tal cual&quot;, sin garantías de ningún tipo, expresas o implícitas, incluidas las de comerciabilidad, adecuación a un fin concreto, exactitud, disponibilidad o ausencia de errores.</p>
+<h3>6. AVISO FINANCIERO</h3>
+<p>Los tipos de referencia son diarios y el resto de cotizaciones y precios (incluidos los de criptomonedas) son meramente indicativos. No son tasas en tiempo real ni constituyen una oferta, recomendación o asesoramiento de cambio, compra, venta o inversión. Las criptomonedas son muy volátiles. Toda decisión es responsabilidad exclusiva del usuario.</p>
+<h3>7. LIMITACIÓN DE RESPONSABILIDAD</h3>
+<p>En la máxima medida permitida por la ley, el titular no será responsable de daños indirectos, lucro cesante, pérdida de datos o perjuicios económicos derivados del uso o de la imposibilidad de usar la Aplicación. Nada de lo aquí dispuesto limita la responsabilidad que no pueda limitarse legalmente.</p>
+<h3>8. DATOS PERSONALES</h3>
+<p>La Aplicación no recopila datos personales ni los envía a servidores del titular. Las preferencias se guardan en el propio equipo o navegador del usuario. Más información en <a href="https://divisaandgo.netlify.app/soporte.html#privacidad">https://divisaandgo.netlify.app/soporte.html#privacidad</a></p>
+<h3>9. DURACIÓN Y TERMINACIÓN</h3>
+<p>La licencia dura mientras cumplas estas condiciones. Si las incumples, termina automáticamente y debes dejar de usar la Aplicación y eliminar todas sus copias. El titular puede además retirar la Aplicación o cambiar estas condiciones para versiones futuras.</p>
+<h3>10. LEY APLICABLE</h3>
+<p>Esta licencia se rige por la legislación española. Para cualquier controversia, y salvo que la ley imperativa disponga otra cosa, las partes se someten a los juzgados y tribunales competentes en España.</p>
+<h3>11. PERMISOS Y CONTACTO</h3>
+<p>Para solicitar una licencia comercial, autorización de redistribución u otro permiso: <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
+
+    </div>
+    <div class="en">
+<h2>DIVISA&amp;GO — PROPRIETARY LICENSE</h2>
+<p class="muted">Copyright (c) 2026 Demkor Consultants. All rights reserved.</p>
+<p>Divisa&amp;Go (the &quot;Software&quot;) includes the Chrome extension, the Windows desktop application, its installer, the website and all associated texts, images, icons, videos and source code. The Software is NOT free software and NOT open source.</p>
+<h3>1. OWNERSHIP</h3>
+<p>The Software and all intellectual and industrial property rights in it belong to Demkor Consultants (lead developer: Danny Medina Coronel). This license transfers no ownership; it only grants a limited right of use.</p>
+<h3>2. LICENSE GRANTED</h3>
+<p>You are granted a personal, non-exclusive, non-transferable, non-sublicensable, revocable, royalty-free license to install and use the Software, as officially distributed, for your personal use or for the internal use of your professional activity.</p>
+<h3>3. RESTRICTIONS</h3>
+<p>Without the owner&#x27;s prior written permission, you may not:</p>
+<ul><li>copy, reproduce or redistribute the Software, in whole or in part, except for the copy needed to use it and one personal backup copy;</li><li>sell, rent, lend, sublicense, publish on other stores or websites, or make the Software or its installers available to third parties;</li><li>modify, adapt, translate or create derivative works from the Software;</li><li>decompile, disassemble or reverse engineer it, except to the extent applicable law expressly permits and cannot be excluded by contract;</li><li>remove or alter authorship, trademark or ownership notices;</li><li>use the name &quot;Divisa&amp;Go&quot;, its logo or its images to identify other products or services, or suggest an affiliation with the owner;</li><li>use the Software for unlawful purposes or to extract, in an automated and massive way, data from the quote sources it queries.</li></ul>
+<h3>4. THIRD-PARTY COMPONENTS AND DATA SOURCES</h3>
+<p>The Software includes third-party components (for example Electron and Chromium), governed by their own licenses, which are included in the installer. Quotes come from third-party services (central banks and data providers) with their own terms of use, which you must respect. The owner neither owns nor is responsible for those services.</p>
+<h3>5. NO WARRANTY</h3>
+<p>The Software is provided &quot;as is&quot;, without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, accuracy, availability or absence of errors.</p>
+<h3>6. FINANCIAL NOTICE</h3>
+<p>Reference rates are daily and all other quotes and prices (including cryptocurrency prices) are merely indicative. They are not real-time rates and are not an offer, recommendation or advice to exchange, buy, sell or invest. Cryptocurrencies are highly volatile. Every decision is the user&#x27;s sole responsibility.</p>
+<h3>7. LIMITATION OF LIABILITY</h3>
+<p>To the maximum extent permitted by law, the owner shall not be liable for indirect damages, loss of profits, loss of data or economic harm arising from the use of, or inability to use, the Software. Nothing here limits liability that cannot lawfully be limited.</p>
+<h3>8. PERSONAL DATA</h3>
+<p>The Software does not collect personal data nor send it to the owner&#x27;s servers. Preferences are stored on the user&#x27;s own computer or browser. More information at <a href="https://divisaandgo.netlify.app/soporte.html#privacidad">https://divisaandgo.netlify.app/soporte.html#privacidad</a></p>
+<h3>9. TERM AND TERMINATION</h3>
+<p>The license lasts as long as you comply with these terms. If you breach them, it terminates automatically and you must stop using the Software and delete all copies. The owner may also withdraw the Software or change these terms for future versions.</p>
+<h3>10. GOVERNING LAW</h3>
+<p>This license is governed by Spanish law. For any dispute, and unless mandatory law provides otherwise, the parties submit to the competent courts of Spain.</p>
+<h3>11. PERMISSIONS AND CONTACT</h3>
+<p>To request a commercial license, redistribution permission or any other permission: <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
+
+    </div>
+    <p class="muted" style="margin-top:28px"><span class="es">Texto completo también en el archivo LICENSE del repositorio.</span><span class="en">Full text also in the LICENSE file of the repository.</span></p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-links">
+    <a href="index.html"><span class="es">Inicio</span><span class="en">Home</span></a>
+    <a href="soporte.html"><span class="es">Soporte</span><span class="en">Support</span></a>
+    <a href="soporte.html#privacidad"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+    <a href="licencia.html"><span class="es">Licencia</span><span class="en">License</span></a>
+  </div>
+  <span class="es">Desarrollado por Demkor Consultants · Desarrollador principal: Danny Medina Coronel</span>
+  <span class="en">Developed by Demkor Consultants · Lead developer: Danny Medina Coronel</span>
+</footer>
+
+<script>
+const root = document.documentElement;
+function setLang(lang) {
+  root.lang = lang;
+  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  try { localStorage.setItem("divisagoSiteLang", lang); } catch {}
+}
+document.querySelectorAll("[data-lang]").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
+let initial = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
+try { initial = localStorage.getItem("divisagoSiteLang") || initial; } catch {}
+setLang(initial);
+</script>
+</body>
+</html>

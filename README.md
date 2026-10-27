@@ -17,6 +17,7 @@ Gratis · Sin registro · Sin rastreo
 ![Versión](https://img.shields.io/badge/versi%C3%B3n-1.0.0-8a2be2?style=flat-square)
 ![Tamaño](https://img.shields.io/badge/instalador-99%20MB-2b6cff?style=flat-square)
 ![Gratis](https://img.shields.io/badge/precio-gratis-2e9b63?style=flat-square)
+![Licencia](https://img.shields.io/badge/licencia-propietaria-c0392b?style=flat-square)
 ![Idiomas](https://img.shields.io/badge/idiomas-6-ffb000?style=flat-square)
 
 **[🌐 Web](https://divisaandgo.netlify.app/)** · **[🛟 Soporte](https://divisaandgo.netlify.app/soporte.html)** · **[🎬 Vídeo](assets/demo-es.mp4)** · **[🔒 Privacidad](https://divisaandgo.netlify.app/soporte.html#privacidad)**
@@ -85,6 +86,14 @@ La misma aplicación existe como extensión de Chrome, con tres formas de usarla
 ## ℹ️ Importante
 
 Los tipos de referencia son diarios y el resto de cotizaciones son indicativas. **No son tasas en tiempo real ni una oferta de cambio o inversión.** Las criptomonedas son muy volátiles.
+
+## 📜 Licencia
+
+**Divisa&Go es software propietario.** Es gratuito para uso personal y profesional interno, pero **no es software libre ni de código abierto**: no puedes copiarlo, modificarlo, redistribuirlo, venderlo ni publicarlo en otros sitios sin autorización por escrito.
+
+© 2026 **Demkor Consultants**. Todos los derechos reservados. Consulta el texto completo en [`LICENSE`](LICENSE) o en la [página de licencia](https://divisaandgo.netlify.app/licencia.html).
+
+¿Necesitas una licencia comercial o permiso de redistribución? Escribe a [empresademkor@gmail.com](mailto:empresademkor@gmail.com?subject=Licencia%20Divisa%26Go).
 
 ## 💬 Ayuda y contacto
 
