@@ -3,42 +3,289 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soporte · DivisaGo</title>
+<title>DivisaGo · Conversor de divisas para Chrome</title>
+<meta name="description" content="DivisaGo convierte más de 150 divisas, muestra su evolución y compara 4 fuentes. Gratis y sin registro. Soporte y privacidad.">
+<meta property="og:title" content="DivisaGo · Conversor de divisas para Chrome">
+<meta property="og:description" content="Más de 150 divisas, gráficos de evolución y 4 fuentes para comparar. Gratis y sin registro.">
+<meta property="og:image" content="assets/shot-convertir.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; color: #fff;
-    font-family: "Segoe UI", Arial, sans-serif; background: linear-gradient(135deg, #ff2e88 0%, #8a2be2 55%, #2b6cff 100%); }
-  main { width: min(100%, 560px); padding: 32px; border-radius: 24px; color: #30242a; background: #fff; box-shadow: 0 30px 80px rgba(30, 0, 70, .45); }
-  h1 { margin: 0 0 6px; font-size: 32px; }
-  h1 span { color: #bd5278; }
-  h2 { margin: 28px 0 8px; font-size: 18px; }
-  p, li { line-height: 1.55; font-size: 15px; }
-  .btn { display: inline-block; margin: 12px 0 4px; padding: 14px 26px; border-radius: 999px; color: #3a1466; background: #ffe14d;
-    font-weight: 800; font-size: 17px; text-decoration: none; box-shadow: 0 8px 20px rgba(255, 190, 0, .4); }
-  .btn:hover { transform: translateY(-1px); }
-  .muted { color: #7a6a72; font-size: 13px; }
-  hr { border: 0; border-top: 1px solid #f0e4e9; margin: 26px 0 0; }
+:root {
+  --ink: #2b1f33; --muted: #6f6178; --pink: #ff2e88; --violet: #8a2be2; --blue: #2b6cff; --yellow: #ffe14d; --soft: #fff5fa; --line: #f0e1ec;
+  --grad: linear-gradient(135deg, #ff2e88 0%, #8a2be2 55%, #2b6cff 100%);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+body { margin: 0; color: var(--ink); background: #fff; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; line-height: 1.6; }
+html[lang="es"] .en, html[lang="en"] .es { display: none !important; }
+a { color: var(--violet); }
+img, video { max-width: 100%; height: auto; display: block; }
+.wrap { width: min(1120px, 100% - 40px); margin: 0 auto; }
+
+/* Navegación */
+nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(255, 255, 255, .82); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; gap: 22px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+.brand b { color: var(--pink); }
+nav a.link { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+nav a.link:hover { color: var(--violet); }
+.lang { display: flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang button { border: 0; padding: 6px 14px; font: inherit; font-weight: 800; font-size: 13px; cursor: pointer; color: var(--muted); background: #fff; }
+.lang button[aria-pressed="true"] { color: #fff; background: var(--grad); }
+@media (max-width: 760px) { nav a.link { display: none; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; color: #fff; background: var(--grad); padding: 72px 0 96px; }
+.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; }
+.hero::before { width: 520px; height: 520px; right: -140px; top: -180px; background: rgba(255, 225, 77, .5); }
+.hero::after { width: 420px; height: 420px; left: -150px; bottom: -200px; background: rgba(0, 229, 255, .38); }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.hero .wrap > * { min-width: 0; }
+@media (max-width: 880px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-shot { transform: none; } }
+.pill { display: inline-block; padding: 7px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .5); font-weight: 700; font-size: 14px; }
+h1 { margin: 18px 0 14px; font-size: clamp(38px, 6vw, 68px); line-height: 1.04; font-weight: 900; text-shadow: 0 6px 30px rgba(40, 0, 80, .35); }
+h1 em { font-style: normal; color: var(--yellow); }
+.lead { margin: 0 0 28px; font-size: clamp(18px, 2.2vw, 23px); opacity: .96; max-width: 34em; }
+.btns { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn { display: inline-block; padding: 15px 28px; border-radius: 999px; font-weight: 800; font-size: 17px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { color: #3a1466; background: var(--yellow); box-shadow: 0 10px 26px rgba(255, 190, 0, .45); }
+.btn.ghost { color: #fff; border: 2px solid rgba(255, 255, 255, .7); }
+.hero-shot { border-radius: 22px; box-shadow: 0 40px 90px rgba(30, 0, 70, .55), 0 0 0 8px rgba(255, 255, 255, .9); transform: rotate(1.5deg); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.chips > span { padding: 8px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .45); font-weight: 700; font-size: 15px; }
+
+/* Secciones */
+section { padding: 84px 0; }
+section.alt { background: var(--soft); }
+.kicker { color: var(--pink); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
+h2 { margin: 8px 0 14px; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; font-weight: 900; }
+h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sub { margin: 0 auto 40px; color: var(--muted); font-size: 18px; max-width: 40em; }
+.center { text-align: center; } .center .sub { margin-inline: auto; }
+
+/* Vídeo */
+.video-card { border-radius: 24px; overflow: hidden; background: #1a1022; box-shadow: 0 30px 80px rgba(80, 20, 120, .35); border: 6px solid #fff; outline: 2px solid var(--line); }
+.video-card video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.vlang { display: flex; justify-content: center; margin-bottom: 20px; }
+
+/* Funciones */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
+.card { padding: 26px; border-radius: 20px; background: #fff; border: 2px solid var(--line); transition: transform .2s, box-shadow .2s, border-color .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(138, 43, 226, .15); border-color: #e6b8ff; }
+.ico { width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 16px; font-size: 28px; background: var(--grad); box-shadow: 0 8px 20px rgba(138, 43, 226, .3); }
+.card h3 { margin: 0 0 6px; font-size: 20px; }
+.card p { margin: 0; color: var(--muted); font-size: 16px; }
+
+/* Galería */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+.gallery button { padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
+.gallery img { width: 100%; border-radius: 18px; box-shadow: 0 14px 36px rgba(60, 20, 100, .22); border: 4px solid #fff; transition: transform .2s; }
+.gallery button:hover img { transform: scale(1.025); }
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 24px; background: rgba(20, 8, 30, .86); cursor: zoom-out; }
+.lightbox.open { display: grid; }
+.lightbox img { max-height: 92vh; border-radius: 14px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); }
+
+/* Soporte */
+.support { color: #fff; background: var(--grad); text-align: center; position: relative; overflow: hidden; }
+.support::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -120px; top: -160px; background: rgba(255, 225, 77, .45); }
+.support .wrap { position: relative; }
+.support p { font-size: 19px; max-width: 36em; margin: 0 auto 26px; opacity: .96; }
+.support small { display: block; margin-top: 14px; opacity: .85; }
+
+/* FAQ */
+details { border: 2px solid var(--line); border-radius: 16px; background: #fff; margin-bottom: 12px; padding: 4px 20px; }
+details[open] { border-color: #e6b8ff; }
+summary { padding: 14px 0; font-weight: 800; font-size: 18px; cursor: pointer; }
+details p { margin: 0 0 16px; color: var(--muted); }
+
+/* Privacidad y más apps */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+.panel { padding: 30px; border-radius: 22px; border: 2px solid var(--line); background: #fff; }
+.panel h3 { margin: 0 0 10px; font-size: 24px; }
+.panel p { color: var(--muted); }
+.more { background: linear-gradient(135deg, #fff4c2, #ffe1f0); border-color: #ffd1e6; }
+footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
-<main>
-  <h1>Divisa<span>Go</span> · Soporte</h1>
-  <p>¿Tienes una duda, un problema o una idea para mejorar DivisaGo? Escríbenos y te respondemos lo antes posible.</p>
-  <a class="btn" href="mailto:empresademkor@gmail.com?subject=Soporte%20DivisaGo&amp;body=Hola%2C%0A%0AMi%20consulta%3A%0A%0A%0A---%0AVersi%C3%B3n%20de%20DivisaGo%3A%0AIdioma%3A%0A">✉️ Enviar mensaje</a>
-  <p class="muted">Se abrirá tu programa de correo. También puedes escribir a empresademkor@gmail.com.</p>
 
-  <h2>Preguntas frecuentes</h2>
-  <ul>
-    <li><strong>¿Las tasas son en tiempo real?</strong> No. Los tipos de referencia son diarios (bancos centrales vía Frankfurter y BCE). Wise, Xe y TradingView son valores indicativos que se actualizan cada 30 minutos.</li>
-    <li><strong>¿Cómo guardo mis favoritos?</strong> Pulsa la estrella junto a una moneda. En "Copia de seguridad de favoritos" puedes exportarlos e importarlos.</li>
-    <li><strong>Una cotización aparece como "No disponible".</strong> La fuente puede estar caída temporalmente. Pulsa el botón de actualizar o inténtalo más tarde.</li>
-  </ul>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icon.png" alt=""><span>Divisa<b>Go</b></span></a>
+    <a class="link" href="#video"><span class="es">Vídeo</span><span class="en">Video</span></a>
+    <a class="link" href="#funciones"><span class="es">Funciones</span><span class="en">Features</span></a>
+    <a class="link" href="#capturas"><span class="es">Capturas</span><span class="en">Screenshots</span></a>
+    <a class="link" href="#soporte"><span class="es">Soporte</span><span class="en">Support</span></a>
+    <a class="link" href="#privacidad"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
 
-  <hr>
-  <h1 style="font-size:26px;margin-top:22px">Privacy / <span>Privacidad</span></h1>
-  <p>DivisaGo no recopila, vende ni comparte datos personales. No requiere registro. El idioma, las monedas favoritas, las tasas en caché y el estado del popup se guardan solo en tu navegador. Las consultas de tipos de cambio envían únicamente el par de monedas y el periodo elegidos a Frankfurter, el BCE, Wise, Xe y TradingView.</p>
-  <p lang="en">DivisaGo does not collect, sell or share personal data and needs no sign-up. Language, favorite currencies, cached rates and popup state are stored only in your browser. Exchange-rate requests send only the chosen currency pair and period to Frankfurter, the ECB, Wise, Xe and TradingView.</p>
-  <p class="muted">Contacto / Contact: empresademkor@gmail.com</p>
-</main>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="es">Extensión gratuita para Chrome</span><span class="en">Free Chrome extension</span></span>
+      <h1><span class="es">Tu dinero, <em>sin fronteras</em></span><span class="en">Your money, <em>without borders</em></span></h1>
+      <p class="lead"><span class="es">Convierte más de 150 divisas, mira cómo evolucionan y compara 4 fuentes. Rápido, claro y siempre a mano.</span><span class="en">Convert 150+ currencies, see how they move and compare 4 sources. Fast, clear and always at hand.</span></p>
+      <div class="btns">
+        <a class="btn primary" href="#video"><span class="es">▶ Ver cómo funciona</span><span class="en">▶ See how it works</span></a>
+        <a class="btn ghost" href="#soporte"><span class="es">Contactar con soporte</span><span class="en">Contact support</span></a>
+      </div>
+      <div class="chips">
+        <span>150+ <span class="es">divisas</span><span class="en">currencies</span></span>
+        <span class="es">Gratis</span><span class="en">Free</span>
+        <span class="es">Sin registro</span><span class="en">No sign-up</span>
+        <span>6 <span class="es">idiomas</span><span class="en">languages</span></span>
+      </div>
+    </div>
+    <img class="hero-shot" src="assets/shot-convertir.jpg" alt="DivisaGo" width="1280" height="800">
+  </div>
+</header>
+
+<section id="video">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker"><span class="es">Míralo en acción</span><span class="en">See it in action</span></div>
+      <h2><span class="es">DivisaGo en <em>un minuto</em></span><span class="en">DivisaGo in <em>one minute</em></span></h2>
+      <p class="sub"><span class="es">Así se convierte una cantidad, se consulta la evolución y se comparan las fuentes.</span><span class="en">How to convert an amount, check the trend and compare the sources.</span></p>
+    </div>
+    <div class="vlang"><div class="lang" role="group" aria-label="Video language">
+      <button type="button" data-vlang="es" aria-pressed="true">Español</button>
+      <button type="button" data-vlang="en" aria-pressed="false">English</button>
+    </div></div>
+    <div class="video-card">
+      <video id="demo" controls preload="metadata" playsinline poster="assets/shot-convertir.jpg">
+        <source id="demo-src" src="assets/demo-es.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="funciones">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker"><span class="es">Todo lo que necesitas</span><span class="en">Everything you need</span></div>
+      <h2><span class="es">Funciones <em>pensadas para ti</em></span><span class="en">Features <em>made for you</em></span></h2>
+      <p class="sub"><span class="es">Sencilla por fuera, completa por dentro.</span><span class="en">Simple outside, complete inside.</span></p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ico">💱</div><h3><span class="es">Conversión al instante</span><span class="en">Instant conversion</span></h3><p><span class="es">Más de 150 monedas con banderas y nombres en tu idioma. Busca por país, nombre o código.</span><span class="en">150+ currencies with flags and names in your language. Search by country, name or code.</span></p></div>
+      <div class="card"><div class="ico">📈</div><h3><span class="es">Evolución de la moneda</span><span class="en">Currency trends</span></h3><p><span class="es">De 1 semana a 5 años, con mínimo, máximo y % de cambio para elegir el mejor momento.</span><span class="en">From 1 week to 5 years, with low, high and % change to pick the best moment.</span></p></div>
+      <div class="card"><div class="ico">🔍</div><h3><span class="es">4 fuentes a la vez</span><span class="en">4 sources at once</span></h3><p><span class="es">Compara BCE, Wise, Xe y TradingView, actualizadas cada 30 minutos.</span><span class="en">Compare ECB, Wise, Xe and TradingView, refreshed every 30 minutes.</span></p></div>
+      <div class="card"><div class="ico">⭐</div><h3><span class="es">Favoritos con copia</span><span class="en">Favorites with backup</span></h3><p><span class="es">Guarda tus monedas favoritas y expórtalas o impórtalas como copia de seguridad.</span><span class="en">Save your favorite currencies and export or import them as a backup.</span></p></div>
+      <div class="card"><div class="ico">🎨</div><h3><span class="es">Tres temas</span><span class="en">Three themes</span></h3><p><span class="es">Rosa, Día y Noche, para que se vea como más te guste.</span><span class="en">Pink, Day and Night, so it looks the way you like.</span></p></div>
+      <div class="card"><div class="ico">🌍</div><h3><span class="es">6 idiomas</span><span class="en">6 languages</span></h3><p><span class="es">Español, inglés, portugués, francés, alemán e italiano, con tutorial de 30 segundos.</span><span class="en">Spanish, English, Portuguese, French, German and Italian, with a 30-second tutorial.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="capturas">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker"><span class="es">Capturas</span><span class="en">Screenshots</span></div>
+      <h2><span class="es">Así se <em>ve DivisaGo</em></span><span class="en">This is <em>DivisaGo</em></span></h2>
+      <p class="sub"><span class="es">Pulsa una imagen para verla en grande.</span><span class="en">Click an image to enlarge it.</span></p>
+    </div>
+    <div class="gallery">
+      <button type="button" data-full="assets/shot-convertir.jpg"><img loading="lazy" src="assets/thumb-convertir.jpg" alt="Conversión / Conversion"></button>
+      <button type="button" data-full="assets/shot-evolucion.jpg"><img loading="lazy" src="assets/thumb-evolucion.jpg" alt="Evolución / Trends"></button>
+      <button type="button" data-full="assets/shot-comparar.jpg"><img loading="lazy" src="assets/thumb-comparar.jpg" alt="4 fuentes / 4 sources"></button>
+      <button type="button" data-full="assets/shot-buscar.jpg"><img loading="lazy" src="assets/thumb-buscar.jpg" alt="Búsqueda / Search"></button>
+      <button type="button" data-full="assets/shot-temas.jpg"><img loading="lazy" src="assets/thumb-temas.jpg" alt="Temas / Themes"></button>
+      <button type="button" data-full="assets/shot-tutorial.jpg"><img loading="lazy" src="assets/thumb-tutorial.jpg" alt="Tutorial"></button>
+    </div>
+  </div>
+</section>
+
+<section class="support" id="soporte">
+  <div class="wrap">
+    <div class="kicker" style="color:#ffe14d"><span class="es">Soporte</span><span class="en">Support</span></div>
+    <h2><span class="es">¿Una duda o una <em style="-webkit-text-fill-color:#ffe14d;color:#ffe14d">idea</em>?</span><span class="en">A question or an <em style="-webkit-text-fill-color:#ffe14d;color:#ffe14d">idea</em>?</span></h2>
+    <p><span class="es">Escríbenos y te respondemos lo antes posible. Un clic y se abre tu correo con el mensaje preparado.</span><span class="en">Write to us and we'll reply as soon as possible. One click opens your email with the message ready.</span></p>
+    <a class="btn primary" href="mailto:empresademkor@gmail.com?subject=Soporte%20DivisaGo&amp;body=Hola%2C%0A%0AMi%20consulta%3A%0A%0A%0A---%0AVersi%C3%B3n%20de%20DivisaGo%3A%0AIdioma%3A%0A">✉️ <span class="es">Enviar mensaje</span><span class="en">Send message</span></a>
+    <small>empresademkor@gmail.com</small>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:820px">
+    <div class="center">
+      <div class="kicker"><span class="es">Preguntas frecuentes</span><span class="en">FAQ</span></div>
+      <h2><span class="es">Resolvemos tus <em>dudas</em></span><span class="en">Your questions, <em>answered</em></span></h2>
+    </div>
+    <details><summary><span class="es">¿Las tasas son en tiempo real?</span><span class="en">Are the rates real-time?</span></summary><p><span class="es">No. Los tipos de referencia son diarios (bancos centrales vía Frankfurter y BCE). Wise, Xe y TradingView son valores indicativos que se actualizan cada 30 minutos. No son una oferta de cambio.</span><span class="en">No. Reference rates are daily (central banks via Frankfurter and the ECB). Wise, Xe and TradingView are indicative values refreshed every 30 minutes. They are not an exchange offer.</span></p></details>
+    <details><summary><span class="es">¿Cómo guardo mis favoritos?</span><span class="en">How do I save my favorites?</span></summary><p><span class="es">Pulsa la estrella junto a una moneda. En «Copia de seguridad de favoritos» puedes exportarlos a un archivo e importarlos arrastrándolo o pegando su contenido.</span><span class="en">Click the star next to a currency. Under “Favorites backup” you can export them to a file and import them by dragging it in or pasting its contents.</span></p></details>
+    <details><summary><span class="es">Una cotización aparece como «No disponible»</span><span class="en">A quote shows “Unavailable”</span></summary><p><span class="es">La fuente puede estar caída temporalmente. Pulsa el botón de actualizar o inténtalo más tarde; las demás fuentes siguen funcionando.</span><span class="en">The source may be temporarily down. Press the refresh button or try again later; the other sources keep working.</span></p></details>
+    <details><summary><span class="es">¿Cuesta algo? ¿Necesito una cuenta?</span><span class="en">Does it cost anything? Do I need an account?</span></summary><p><span class="es">Es gratis y no necesitas registrarte ni crear ninguna cuenta.</span><span class="en">It's free and you don't need to sign up or create any account.</span></p></details>
+  </div>
+</section>
+
+<section class="alt" id="privacidad">
+  <div class="wrap">
+    <div class="two">
+      <div class="panel">
+        <h3>🔒 <span class="es">Privacidad</span><span class="en">Privacy</span></h3>
+        <p><span class="es">DivisaGo no recopila, vende ni comparte datos personales y no requiere registro. El idioma, las monedas favoritas, las tasas en caché y el estado de la ventana se guardan solo en tu navegador. Las consultas de tipos de cambio envían únicamente el par de monedas y el periodo elegidos a Frankfurter, el BCE, Wise, Xe y TradingView.</span><span class="en">DivisaGo does not collect, sell or share personal data and needs no sign-up. Language, favorite currencies, cached rates and popup state are stored only in your browser. Exchange-rate requests send only the chosen currency pair and period to Frankfurter, the ECB, Wise, Xe and TradingView.</span></p>
+        <p><span class="es">Contacto:</span><span class="en">Contact:</span> <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
+      </div>
+      <div class="panel more">
+        <h3>🧩 <span class="es">También disponible</span><span class="en">Also available</span></h3>
+        <p><span class="es"><b>FullPage Saver</b>, mi otra extensión para Chrome. Descúbrela en la Chrome Web Store.</span><span class="en"><b>FullPage Saver</b>, my other Chrome extension. Find it on the Chrome Web Store.</span></p>
+        <a class="btn primary" style="padding:12px 22px;font-size:16px" href="https://chromewebstore.google.com/detail/igjphghlkmidddmnmlmdnhnepehpoena" target="_blank" rel="noopener"><span class="es">Descubrir FullPage Saver</span><span class="en">Discover FullPage Saver</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="es">Desarrollado por Demkor Consultants · Desarrollador principal: Danny Medina Coronel</span>
+  <span class="en">Developed by Demkor Consultants · Lead developer: Danny Medina Coronel</span>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><img alt=""></div>
+
+<script>
+const root = document.documentElement;
+const video = document.querySelector("#demo");
+const videoSrc = document.querySelector("#demo-src");
+function setLang(lang) {
+  root.lang = lang;
+  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  try { localStorage.setItem("divisagoSiteLang", lang); } catch {}
+  setVideo(lang);
+}
+function setVideo(lang) {
+  document.querySelectorAll("[data-vlang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.vlang === lang)));
+  const wanted = `assets/demo-${lang}.mp4`;
+  if (!videoSrc.getAttribute("src").endsWith(wanted)) {
+    const wasPlaying = !video.paused;
+    videoSrc.setAttribute("src", wanted);
+    video.load();
+    if (wasPlaying) video.play().catch(() => {});
+  }
+}
+document.querySelectorAll("[data-lang]").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
+document.querySelectorAll("[data-vlang]").forEach((b) => b.addEventListener("click", () => setVideo(b.dataset.vlang)));
+
+let initial = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
+try { initial = localStorage.getItem("divisagoSiteLang") || initial; } catch {}
+setLang(initial);
+
+const box = document.querySelector("#lightbox");
+const boxImg = box.querySelector("img");
+document.querySelectorAll(".gallery button").forEach((b) => b.addEventListener("click", () => {
+  boxImg.src = b.dataset.full;
+  box.classList.add("open");
+}));
+box.addEventListener("click", () => box.classList.remove("open"));
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") box.classList.remove("open"); });
+</script>
 </body>
 </html>
