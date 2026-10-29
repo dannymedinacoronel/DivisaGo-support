@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" role="img" aria-label="Divisa&amp;Go — Tu dinero, sin fronteras">
+  <title>Divisa&amp;Go — Tu dinero, sin fronteras</title>
+  <defs>
+    <radialGradient id="glow" cx="78%" cy="30%" r="60%">
+  <stop offset="0" stop-color="#2f6bff" stop-opacity=".42"/>
+  <stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stroke" x1="0" x2="1">
+  <stop offset="0" stop-color="#86a8f2" stop-opacity="0"/>
+  <stop offset=".35" stop-color="#86a8f2"/>
+  <stop offset="1" stop-color="#e8c766"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#86a8f2" stop-opacity=".22"/>
+  <stop offset="1" stop-color="#86a8f2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" x2="1">
+  <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+  <stop offset=".5" stop-color="#fff" stop-opacity=".55"/>
+  <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+  <path d="M48 0H0V48" fill="none" stroke="#1a2430" stroke-width="1"/>
+    </pattern>
+    <clipPath id="band"><rect x="0" y="352" width="1280" height="68"/></clipPath>
+  </defs>
+  <style>
+    .serif { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif; }
+    .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace; }
+    .in { opacity: 0; animation: up 1.1s cubic-bezier(.22, 1, .36, 1) forwards; }
+    .d1 { animation-delay: .15s; } .d2 { animation-delay: .5s; } .d3 { animation-delay: .85s; }
+    @keyframes up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+    .glow { animation: pulse 7s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+    .rule { transform-box: fill-box; transform-origin: left; transform: scaleX(0); animation: grow 1.4s cubic-bezier(.22, 1, .36, 1) 1.1s forwards; }
+    @keyframes grow { to { transform: scaleX(1); } }
+    .draw { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: draw 3.4s cubic-bezier(.45, 0, .2, 1) .5s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .fill { opacity: 0; animation: show 1.6s ease-out 2.6s forwards; }
+    @keyframes show { to { opacity: 1; } }
+    .dot { opacity: 0; animation: show .6s ease-out 3.6s forwards, beat 2.4s ease-in-out 4.2s infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.7); } }
+    .sym { opacity: 0; animation: drift 14s linear infinite; }
+    @keyframes drift { 0% { opacity: 0; transform: translateY(30px); } 15% { opacity: .5; } 85% { opacity: .5; } 100% { opacity: 0; transform: translateY(-90px); } }
+    .ticker { animation: slide 38s linear infinite; }
+    .ticker text { white-space: pre; }
+    @keyframes slide { to { transform: translateX(-1800px); } }
+    .sweep { animation: sweep 6.5s ease-in-out 2.5s infinite; }
+    @keyframes sweep { 0% { transform: translateX(-420px); } 45%, 100% { transform: translateX(1280px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; } .sym, .sweep { display: none; } }
+  </style>
+
+  <rect width="1280" height="420" fill="#0d1218"/>
+  <rect width="1280" height="420" fill="url(#grid)" opacity=".55"/>
+  <rect class="glow" width="1280" height="420" fill="url(#glow)"/>
+
+  <!-- símbolos que suben despacio -->
+  <g class="serif" fill="#86a8f2" font-size="34">
+    <text class="sym" x="620" y="330" style="animation-delay:0s">$</text>
+    <text class="sym" x="760" y="340" style="animation-delay:2.4s">€</text>
+    <text class="sym" x="900" y="335" style="animation-delay:5s">£</text>
+    <text class="sym" x="1040" y="345" style="animation-delay:7.6s">¥</text>
+    <text class="sym" x="1160" y="330" style="animation-delay:10.2s">₿</text>
+    <text class="sym" x="540" y="345" style="animation-delay:12s" fill="#e8c766">Au</text>
+  </g>
+
+  <!-- gráfico que se dibuja -->
+  <g>
+    <path class="fill" d="M600 300 C 660 280, 700 250, 760 258 S 860 214, 920 196 S 1030 214, 1090 160 S 1180 112, 1240 92 L1240 330 L600 330 Z" fill="url(#area)"/>
+    <path class="draw" d="M600 300 C 660 280, 700 250, 760 258 S 860 214, 920 196 S 1030 214, 1090 160 S 1180 112, 1240 92" fill="none" stroke="url(#stroke)" stroke-width="3.5" stroke-linecap="round"/>
+    <circle class="dot" cx="1240" cy="92" r="6" fill="#e8c766"/>
+  </g>
+
+  <!-- título -->
+  <g class="serif">
+    <text class="in d1" x="80" y="190" font-size="104" fill="#f1f4f8" letter-spacing="-2">Divisa<tspan fill="#86a8f2" font-style="italic">&amp;Go</tspan></text>
+    <text class="in d2" x="84" y="256" font-size="42" font-style="italic" fill="#a9bbd8">Tu dinero, sin fronteras.</text>
+  </g>
+  <rect class="rule" x="84" y="286" width="176" height="2" fill="#e8c766"/>
+  <text class="in d3 mono" x="84" y="326" font-size="13.5" letter-spacing="3.4" fill="#66758a">CONVERSOR  ·  CALCULADORA DE MÁRGENES  ·  4 FUENTES  ·  CRIPTO Y METALES</text>
+
+  <!-- cinta inferior -->
+  <rect y="352" width="1280" height="68" fill="#090d12"/>
+  <rect y="352" width="1280" height="1" fill="#1d2630"/>
+  <g clip-path="url(#band)">
+    <g class="ticker mono" font-size="15" letter-spacing="1.6" fill="#8d9bb0">
+  <text x="0" y="392" textLength="1800" lengthAdjust="spacing">USD <tspan fill="#86a8f2">→</tspan> EUR   <tspan fill="#3a4658">·</tspan>   EUR <tspan fill="#86a8f2">→</tspan> COP   <tspan fill="#3a4658">·</tspan>   GBP <tspan fill="#86a8f2">→</tspan> EUR   <tspan fill="#3a4658">·</tspan>   MXN <tspan fill="#86a8f2">→</tspan> USD   <tspan fill="#3a4658">·</tspan>   <tspan fill="#e8c766">ORO</tspan>   <tspan fill="#3a4658">·</tspan>   PLATA   <tspan fill="#3a4658">·</tspan>   PLATINO   <tspan fill="#3a4658">·</tspan>   COBRE   <tspan fill="#3a4658">·</tspan>   PETRÓLEO   <tspan fill="#3a4658">·</tspan>   BITCOIN   <tspan fill="#3a4658">·</tspan>   ETHEREUM   <tspan fill="#3a4658">·</tspan>   WISE · FRANKFURTER · XE · TRADINGVIEW   <tspan fill="#3a4658">·</tspan>   </text>
+  <text x="1800" y="392" textLength="1800" lengthAdjust="spacing">USD <tspan fill="#86a8f2">→</tspan> EUR   <tspan fill="#3a4658">·</tspan>   EUR <tspan fill="#86a8f2">→</tspan> COP   <tspan fill="#3a4658">·</tspan>   GBP <tspan fill="#86a8f2">→</tspan> EUR   <tspan fill="#3a4658">·</tspan>   MXN <tspan fill="#86a8f2">→</tspan> USD   <tspan fill="#3a4658">·</tspan>   <tspan fill="#e8c766">ORO</tspan>   <tspan fill="#3a4658">·</tspan>   PLATA   <tspan fill="#3a4658">·</tspan>   PLATINO   <tspan fill="#3a4658">·</tspan>   COBRE   <tspan fill="#3a4658">·</tspan>   PETRÓLEO   <tspan fill="#3a4658">·</tspan>   BITCOIN   <tspan fill="#3a4658">·</tspan>   ETHEREUM   <tspan fill="#3a4658">·</tspan>   WISE · FRANKFURTER · XE · TRADINGVIEW   <tspan fill="#3a4658">·</tspan>   </text>
+    </g>
+  </g>
+
+  <!-- brillo que cruza -->
+  <rect class="sweep" x="0" y="0" width="360" height="420" fill="url(#shine)" opacity=".05" transform="skewX(-18)"/>
+</svg>
