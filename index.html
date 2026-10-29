@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="assets/site.css">
-<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<noscript><style>.reveal, .reveal *{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body id="top">
 
@@ -43,10 +43,10 @@
         <a class="btn ghost" href="#windows"><span class="es">Descargar para Windows</span><span class="en">Download for Windows</span></a>
       </div>
       <ul class="facts">
-        <li><span class="es">150+ divisas</span><span class="en">150+ currencies</span></li>
-        <li><span class="es">4 fuentes de tasas</span><span class="en">4 rate sources</span></li>
+        <li><span class="es"><b data-count="150">150</b>+ divisas</span><span class="en"><b data-count="150">150</b>+ currencies</span></li>
+        <li><span class="es"><b data-count="4">4</b> fuentes de tasas</span><span class="en"><b data-count="4">4</b> rate sources</span></li>
         <li><span class="es">Gratis, sin cuenta</span><span class="en">Free, no account</span></li>
-        <li><span class="es">6 idiomas</span><span class="en">6 languages</span></li>
+        <li><span class="es"><b data-count="6">6</b> idiomas</span><span class="en"><b data-count="6">6</b> languages</span></li>
       </ul>
     </div>
     <div class="stack">
@@ -233,17 +233,7 @@ document.querySelectorAll("[data-vlang]").forEach((b) => b.addEventListener("cli
 let initial = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
 try { initial = localStorage.getItem("divisagoSiteLang") || initial; } catch {}
 setLang(initial);
-
-// Entrada suave de cada bloque al llegar a él.
-const reveals = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add("in"); observer.unobserve(entry.target); }
-  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
-  reveals.forEach((element) => observer.observe(element));
-} else {
-  reveals.forEach((element) => element.classList.add("in"));
-}
 </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
