@@ -4,119 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Licencia · Divisa&amp;Go</title>
-<meta name="description" content="Licencia de uso de Divisa&amp;Go: software propietario, gratuito para uso personal y profesional; las organizaciones de más de 20 personas necesitan licencia corporativa.">
+<meta name="description" content="Licencia de uso de Divisa&amp;Go: software propietario, gratuito para uso personal y profesional; las organizaciones de más de 50 personas necesitan licencia corporativa.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<style>
-:root {
-  --ink: #2b1f33; --muted: #6f6178; --pink: #ff2e88; --violet: #8a2be2; --blue: #2b6cff; --yellow: #ffe14d; --soft: #fff5fa; --line: #f0e1ec;
-  --grad: linear-gradient(135deg, #ff2e88 0%, #8a2be2 55%, #2b6cff 100%);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-html, body { overflow-x: clip; }
-body { margin: 0; color: var(--ink); background: #fff; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; line-height: 1.6; }
-html[lang="es"] .en, html[lang="en"] .es { display: none !important; }
-a { color: var(--violet); }
-img, video { max-width: 100%; height: auto; display: block; }
-.wrap { width: min(1120px, 100% - 40px); margin: 0 auto; }
-
-/* Navegación */
-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(255, 255, 255, .82); border-bottom: 1px solid var(--line); }
-nav .wrap { display: flex; align-items: center; gap: 22px; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; color: var(--ink); text-decoration: none; margin-right: auto; }
-.brand img { width: 34px; height: 34px; border-radius: 9px; }
-.brand b { color: var(--pink); }
-nav a.link { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
-nav a.link:hover { color: var(--violet); }
-.lang { display: flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
-.lang button { border: 0; padding: 6px 14px; font: inherit; font-weight: 800; font-size: 13px; cursor: pointer; color: var(--muted); background: #fff; }
-.lang button[aria-pressed="true"] { color: #fff; background: var(--grad); }
-@media (max-width: 760px) { nav a.link { display: none; } }
-
-/* Hero */
-.hero { position: relative; overflow: hidden; color: #fff; background: var(--grad); padding: 72px 0 96px; }
-.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; }
-.hero::before { width: 520px; height: 520px; right: -140px; top: -180px; background: rgba(255, 225, 77, .5); }
-.hero::after { width: 420px; height: 420px; left: -150px; bottom: -200px; background: rgba(0, 229, 255, .38); }
-.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
-.hero .wrap > * { min-width: 0; }
-@media (max-width: 880px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-shot { transform: none; } }
-.pill { display: inline-block; padding: 7px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .5); font-weight: 700; font-size: 14px; }
-h1 { margin: 18px 0 14px; font-size: clamp(38px, 6vw, 68px); line-height: 1.04; font-weight: 900; text-shadow: 0 6px 30px rgba(40, 0, 80, .35); }
-h1 em { font-style: normal; color: var(--yellow); }
-.lead { margin: 0 0 28px; font-size: clamp(18px, 2.2vw, 23px); opacity: .96; max-width: 34em; }
-.btns { display: flex; flex-wrap: wrap; gap: 14px; }
-.btn { display: inline-block; padding: 15px 28px; border-radius: 999px; font-weight: 800; font-size: 17px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
-.btn:hover { transform: translateY(-2px); }
-.btn.primary { color: #3a1466; background: var(--yellow); box-shadow: 0 10px 26px rgba(255, 190, 0, .45); }
-.btn.ghost { color: #fff; border: 2px solid rgba(255, 255, 255, .7); }
-.hero-shot { border-radius: 22px; box-shadow: 0 40px 90px rgba(30, 0, 70, .55), 0 0 0 8px rgba(255, 255, 255, .9); transform: rotate(1.5deg); }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-.chips > span { padding: 8px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .45); font-weight: 700; font-size: 15px; }
-
-/* Secciones */
-section { padding: 84px 0; }
-section.alt { background: var(--soft); }
-.kicker { color: var(--pink); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
-h2 { margin: 8px 0 14px; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; font-weight: 900; }
-h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.sub { margin: 0 auto 40px; color: var(--muted); font-size: 18px; max-width: 40em; }
-.center { text-align: center; } .center .sub { margin-inline: auto; }
-
-/* Vídeo */
-.video-card { border-radius: 24px; overflow: hidden; background: #1a1022; box-shadow: 0 30px 80px rgba(80, 20, 120, .35); border: 6px solid #fff; outline: 2px solid var(--line); }
-.video-card video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
-.vlang { display: flex; justify-content: center; margin-bottom: 20px; }
-
-/* Funciones */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
-.card { padding: 26px; border-radius: 20px; background: #fff; border: 2px solid var(--line); transition: transform .2s, box-shadow .2s, border-color .2s; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(138, 43, 226, .15); border-color: #e6b8ff; }
-.ico { width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 16px; font-size: 28px; background: var(--grad); box-shadow: 0 8px 20px rgba(138, 43, 226, .3); }
-.card h3 { margin: 0 0 6px; font-size: 20px; }
-.card p { margin: 0; color: var(--muted); font-size: 16px; }
-
-/* Galería */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
-.gallery button { padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
-.gallery img { width: 100%; border-radius: 18px; box-shadow: 0 14px 36px rgba(60, 20, 100, .22); border: 4px solid #fff; transition: transform .2s; }
-.gallery button:hover img { transform: scale(1.025); }
-.lightbox { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 24px; background: rgba(20, 8, 30, .86); cursor: zoom-out; }
-.lightbox.open { display: grid; }
-.lightbox img { max-height: 92vh; border-radius: 14px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); }
-
-/* Soporte */
-.support { color: #fff; background: var(--grad); text-align: center; position: relative; overflow: hidden; }
-.support::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -120px; top: -160px; background: rgba(255, 225, 77, .45); }
-.support .wrap { position: relative; }
-.support p { font-size: 19px; max-width: 36em; margin: 0 auto 26px; opacity: .96; }
-.support small { display: block; margin-top: 14px; opacity: .85; }
-
-/* FAQ */
-details { border: 2px solid var(--line); border-radius: 16px; background: #fff; margin-bottom: 12px; padding: 4px 20px; }
-details[open] { border-color: #e6b8ff; }
-summary { padding: 14px 0; font-weight: 800; font-size: 18px; cursor: pointer; }
-details p { margin: 0 0 16px; color: var(--muted); }
-
-/* Privacidad y más apps */
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
-.panel { padding: 30px; border-radius: 22px; border: 2px solid var(--line); background: #fff; }
-.panel h3 { margin: 0 0 10px; font-size: 24px; }
-.panel p { color: var(--muted); }
-.more { background: linear-gradient(135deg, #fff4c2, #ffe1f0); border-color: #ffd1e6; }
-footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
-.foot-links { display: flex; justify-content: center; gap: 22px; margin-bottom: 12px; font-weight: 700; }
-.foot-links a { color: var(--violet); text-decoration: none; }
-.foot-links a:hover { text-decoration: underline; }
-.page-hero { padding: 64px 0 72px; }
-.legal h2 { margin: 0 0 4px; font-size: clamp(24px, 3.4vw, 34px); }
-.legal h3 { margin: 26px 0 6px; font-size: 17px; color: var(--violet); }
-.legal p, .legal li { color: #4a3d52; font-size: 15px; }
-.legal ul { padding-left: 22px; }
-.legal .muted { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
-.legal a { word-break: break-word; }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -152,7 +45,7 @@ footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14
 <h3>2. LICENCIA CONCEDIDA</h3>
 <p>Se te concede una licencia personal, no exclusiva, intransferible, no sublicenciable, revocable y gratuita para instalar y usar la Aplicación, tal y como se distribuye oficialmente, para tu uso personal o para el uso interno de tu actividad profesional, incluido el de empresas y organizaciones, con el límite del apartado 2 bis.</p>
 <h3>2 bis. LICENCIA CORPORATIVA OBLIGATORIA A PARTIR DE 20 PERSONAS</h3>
-<p>El uso gratuito por parte de una empresa u organización (incluidas sus filiales y las sociedades de su mismo grupo) está permitido mientras la Aplicación la usen, como máximo, 20 personas de esa organización (empleados, colaboradores o contratistas). Si la usan más de 20 personas, es <strong>obligatorio</strong> obtener antes una licencia corporativa del titular. Usar la Aplicación por encima de ese límite sin dicha licencia incumple estas condiciones. Para solicitarla: <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
+<p>El uso gratuito por parte de una empresa u organización (incluidas sus filiales y las sociedades de su mismo grupo) está permitido mientras la Aplicación la usen, como máximo, 50 personas de esa organización (empleados, colaboradores o contratistas). Si la usan más de 50 personas, es <strong>obligatorio</strong> obtener antes una licencia corporativa del titular. Usar la Aplicación por encima de ese límite sin dicha licencia incumple estas condiciones. Para solicitarla: <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
 <h3>3. RESTRICCIONES</h3>
 <p>Sin autorización previa y por escrito del titular, no puedes:</p>
 <ul><li>copiar, reproducir o redistribuir la Aplicación, en todo o en parte, salvo la copia necesaria para usarla y una copia de seguridad personal;</li><li>vender, alquilar, prestar, sublicenciar, publicar en otras tiendas o sitios web, o poner a disposición de terceros la Aplicación o sus instaladores;</li><li>modificar, adaptar, traducir o crear obras derivadas a partir de la Aplicación;</li><li>descompilar, desensamblar o aplicar ingeniería inversa, salvo en la medida en que la ley aplicable lo permita expresamente y no pueda excluirse por contrato;</li><li>eliminar o alterar los avisos de autoría, marca o propiedad;</li><li>usar el nombre &quot;Divisa&amp;Go&quot;, su logotipo o sus imágenes para identificar otros productos o servicios, ni sugerir una afiliación con el titular;</li><li>usar la Aplicación para fines ilícitos o para extraer, de forma automatizada y masiva, datos de las fuentes de cotización que consulta.</li></ul>
@@ -182,8 +75,8 @@ footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14
 <p>The Software and all intellectual and industrial property rights in it belong to Demkor Consultants (lead developer: Danny Medina Coronel). This license transfers no ownership; it only grants a limited right of use.</p>
 <h3>2. LICENSE GRANTED</h3>
 <p>You are granted a personal, non-exclusive, non-transferable, non-sublicensable, revocable, royalty-free license to install and use the Software, as officially distributed, for your personal use or for the internal use of your professional activity, including that of companies and organizations, subject to the limit in section 2 bis.</p>
-<h3>2 bis. CORPORATE LICENSE MANDATORY FROM MORE THAN 20 PEOPLE</h3>
-<p>Free use by a company or organization (including its subsidiaries and companies of the same group) is permitted as long as the Software is used by no more than 20 people of that organization (employees, collaborators or contractors). If more than 20 people use it, obtaining a corporate license from the owner beforehand is <strong>mandatory</strong>. Using the Software above that limit without such a license breaches these terms. To request one: <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
+<h3>2 bis. CORPORATE LICENSE MANDATORY FROM MORE THAN 50 PEOPLE</h3>
+<p>Free use by a company or organization (including its subsidiaries and companies of the same group) is permitted as long as the Software is used by no more than 50 people of that organization (employees, collaborators or contractors). If more than 50 people use it, obtaining a corporate license from the owner beforehand is <strong>mandatory</strong>. Using the Software above that limit without such a license breaches these terms. To request one: <a href="mailto:empresademkor@gmail.com">empresademkor@gmail.com</a></p>
 <h3>3. RESTRICTIONS</h3>
 <p>Without the owner&#x27;s prior written permission, you may not:</p>
 <ul><li>copy, reproduce or redistribute the Software, in whole or in part, except for the copy needed to use it and one personal backup copy;</li><li>sell, rent, lend, sublicense, publish on other stores or websites, or make the Software or its installers available to third parties;</li><li>modify, adapt, translate or create derivative works from the Software;</li><li>decompile, disassemble or reverse engineer it, except to the extent applicable law expressly permits and cannot be excluded by contract;</li><li>remove or alter authorship, trademark or ownership notices;</li><li>use the name &quot;Divisa&amp;Go&quot;, its logo or its images to identify other products or services, or suggest an affiliation with the owner;</li><li>use the Software for unlawful purposes or to extract, in an automated and massive way, data from the quote sources it queries.</li></ul>

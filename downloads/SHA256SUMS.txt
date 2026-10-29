@@ -1,2 +1,2 @@
 d9cf2656a3cbbd0b3e890c59e7b44fee7adddb8db97d1aa43215592153ca9961  Divisa-and-Go-Setup-1.0.0.exe
-bca1e9f344d5d4fbad3807d1fb5b65781a9f272c3b184e2ac718c13ceb08cd7e  Divisa-and-Go-v1.6.0-chrome-web-store.zip
+7d3d53859150c3a4182387f31ebe2beba5d4702eb8769df4033ab31b67a9868a  Divisa-and-Go-v1.6.0-chrome-web-store.zip

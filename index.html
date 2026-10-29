@@ -3,129 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Divisa&amp;Go · Conversor de divisas para Chrome</title>
-<meta name="description" content="Divisa&amp;Go convierte más de 150 divisas, muestra su evolución y compara 4 fuentes. Gratis y sin registro. Soporte y privacidad.">
-<meta property="og:title" content="Divisa&amp;Go · Conversor de divisas para Chrome">
-<meta property="og:description" content="Más de 150 divisas, gráficos de evolución y 4 fuentes para comparar. Gratis y sin registro.">
-<meta property="og:image" content="assets/shot-convertir.jpg">
+<title>Divisa&amp;Go · Conversor de divisas y calculadora de márgenes</title>
+<meta name="description" content="Divisa&amp;Go convierte más de 150 divisas, calcula márgenes sobre el precio neto y compara cuatro fuentes de tasas. Gratis, sin cuenta, para Chrome y Windows.">
+<meta property="og:title" content="Divisa&amp;Go · Conversor de divisas y calculadora de márgenes">
+<meta property="og:description" content="Más de 150 divisas, márgenes sobre el precio neto y cuatro fuentes de tasas. Gratis y sin cuenta.">
+<meta property="og:image" content="assets/app-convertir.png">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<style>
-:root {
-  --ink: #2b1f33; --muted: #6f6178; --pink: #ff2e88; --violet: #8a2be2; --blue: #2b6cff; --yellow: #ffe14d; --soft: #fff5fa; --line: #f0e1ec;
-  --grad: linear-gradient(135deg, #ff2e88 0%, #8a2be2 55%, #2b6cff 100%);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-html, body { overflow-x: clip; }
-body { margin: 0; color: var(--ink); background: #fff; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; line-height: 1.6; }
-html[lang="es"] .en, html[lang="en"] .es { display: none !important; }
-a { color: var(--violet); }
-img, video { max-width: 100%; height: auto; display: block; }
-.wrap { width: min(1120px, 100% - 40px); margin: 0 auto; }
-
-/* Navegación */
-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(255, 255, 255, .82); border-bottom: 1px solid var(--line); }
-nav .wrap { display: flex; align-items: center; gap: 22px; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; color: var(--ink); text-decoration: none; margin-right: auto; }
-.brand img { width: 34px; height: 34px; border-radius: 9px; }
-.brand b { color: var(--pink); }
-nav a.link { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
-nav a.link:hover { color: var(--violet); }
-.lang { display: flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
-.lang button { border: 0; padding: 6px 14px; font: inherit; font-weight: 800; font-size: 13px; cursor: pointer; color: var(--muted); background: #fff; }
-.lang button[aria-pressed="true"] { color: #fff; background: var(--grad); }
-@media (max-width: 760px) { nav a.link { display: none; } }
-
-/* Hero */
-.hero { position: relative; overflow: hidden; color: #fff; background: var(--grad); padding: 72px 0 96px; }
-.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; }
-.hero::before { width: 520px; height: 520px; right: -140px; top: -180px; background: rgba(255, 225, 77, .5); }
-.hero::after { width: 420px; height: 420px; left: -150px; bottom: -200px; background: rgba(0, 229, 255, .38); }
-.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
-.hero .wrap > * { min-width: 0; }
-@media (max-width: 880px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-shot { transform: none; } }
-.pill { display: inline-block; padding: 7px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .5); font-weight: 700; font-size: 14px; }
-h1 { margin: 18px 0 14px; font-size: clamp(38px, 6vw, 68px); line-height: 1.04; font-weight: 900; text-shadow: 0 6px 30px rgba(40, 0, 80, .35); }
-h1 em { font-style: normal; color: var(--yellow); }
-.lead { margin: 0 0 28px; font-size: clamp(18px, 2.2vw, 23px); opacity: .96; max-width: 34em; }
-.btns { display: flex; flex-wrap: wrap; gap: 14px; }
-.btn { display: inline-block; padding: 15px 28px; border-radius: 999px; font-weight: 800; font-size: 17px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
-.btn:hover { transform: translateY(-2px); }
-.btn.primary { color: #3a1466; background: var(--yellow); box-shadow: 0 10px 26px rgba(255, 190, 0, .45); }
-.btn.ghost { color: #fff; border: 2px solid rgba(255, 255, 255, .7); }
-.hero-shot { border-radius: 22px; box-shadow: 0 40px 90px rgba(30, 0, 70, .55), 0 0 0 8px rgba(255, 255, 255, .9); transform: rotate(1.5deg); }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-.chips > span { padding: 8px 16px; border-radius: 999px; background: rgba(255, 255, 255, .2); border: 2px solid rgba(255, 255, 255, .45); font-weight: 700; font-size: 15px; }
-
-/* Secciones */
-section { padding: 84px 0; }
-section.alt { background: var(--soft); }
-.kicker { color: var(--pink); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
-h2 { margin: 8px 0 14px; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; font-weight: 900; }
-h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.sub { margin: 0 auto 40px; color: var(--muted); font-size: 18px; max-width: 40em; }
-.center { text-align: center; } .center .sub { margin-inline: auto; }
-
-/* Vídeo */
-.video-card { border-radius: 24px; overflow: hidden; background: #1a1022; box-shadow: 0 30px 80px rgba(80, 20, 120, .35); border: 6px solid #fff; outline: 2px solid var(--line); }
-.video-card video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
-.vlang { display: flex; justify-content: center; margin-bottom: 20px; }
-
-/* Funciones */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
-.card { padding: 26px; border-radius: 20px; background: #fff; border: 2px solid var(--line); transition: transform .2s, box-shadow .2s, border-color .2s; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(138, 43, 226, .15); border-color: #e6b8ff; }
-.ico { width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 16px; font-size: 28px; background: var(--grad); box-shadow: 0 8px 20px rgba(138, 43, 226, .3); }
-.card h3 { margin: 0 0 6px; font-size: 20px; }
-.card p { margin: 0; color: var(--muted); font-size: 16px; }
-
-/* Galería */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
-.gallery button { padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
-.gallery img { width: 100%; border-radius: 18px; box-shadow: 0 14px 36px rgba(60, 20, 100, .22); border: 4px solid #fff; transition: transform .2s; }
-.gallery button:hover img { transform: scale(1.025); }
-.lightbox { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 24px; background: rgba(20, 8, 30, .86); cursor: zoom-out; }
-.lightbox.open { display: grid; }
-.lightbox img { max-height: 92vh; border-radius: 14px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); }
-
-/* Soporte */
-.support { color: #fff; background: var(--grad); text-align: center; position: relative; overflow: hidden; }
-.support::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -120px; top: -160px; background: rgba(255, 225, 77, .45); }
-.support .wrap { position: relative; }
-.support p { font-size: 19px; max-width: 36em; margin: 0 auto 26px; opacity: .96; }
-.support small { display: block; margin-top: 14px; opacity: .85; }
-
-/* FAQ */
-details { border: 2px solid var(--line); border-radius: 16px; background: #fff; margin-bottom: 12px; padding: 4px 20px; }
-details[open] { border-color: #e6b8ff; }
-summary { padding: 14px 0; font-weight: 800; font-size: 18px; cursor: pointer; }
-details p { margin: 0 0 16px; color: var(--muted); }
-
-/* Privacidad y más apps */
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
-.panel { padding: 30px; border-radius: 22px; border: 2px solid var(--line); background: #fff; }
-.panel h3 { margin: 0 0 10px; font-size: 24px; }
-.panel p { color: var(--muted); }
-.more { background: linear-gradient(135deg, #fff4c2, #ffe1f0); border-color: #ffd1e6; }
-footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
-.foot-links { display: flex; justify-content: center; gap: 22px; margin-bottom: 12px; font-weight: 700; }
-.foot-links a { color: var(--violet); text-decoration: none; }
-.foot-links a:hover { text-decoration: underline; }
-.page-hero { padding: 64px 0 72px; }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
-<body>
+<body id="top">
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/icon.png" alt=""><span>Divisa<b>&amp;Go</b></span></a>
-    <a class="link" href="#video"><span class="es">Vídeo</span><span class="en">Video</span></a>
-    <a class="link" href="#descargar"><span class="es">Windows</span><span class="en">Windows</span></a>
-    <a class="link" href="#funciones"><span class="es">Funciones</span><span class="en">Features</span></a>
-    <a class="link" href="#capturas"><span class="es">Capturas</span><span class="en">Screenshots</span></a>
+    <a class="brand" href="#top"><img src="assets/icon.png" alt="">Divisa&amp;Go</a>
+    <a class="link" href="#margenes"><span class="es">Márgenes</span><span class="en">Margins</span></a>
+    <a class="link" href="#fuentes"><span class="es">Fuentes</span><span class="en">Sources</span></a>
+    <a class="link" href="#windows">Windows</a>
+    <a class="link" href="#licencia"><span class="es">Empresas</span><span class="en">Business</span></a>
     <a class="link" href="soporte.html"><span class="es">Soporte</span><span class="en">Support</span></a>
-    <a class="link" href="soporte.html#privacidad"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -133,146 +32,186 @@ footer { padding: 34px 0; text-align: center; color: var(--muted); font-size: 14
   </div>
 </nav>
 
-<header class="hero" id="top">
+<header class="hero">
   <div class="wrap">
     <div>
-      <span class="pill"><span class="es">Extensión gratuita para Chrome</span><span class="en">Free Chrome extension</span></span>
-      <h1><span class="es">Tu dinero, <em>sin fronteras</em></span><span class="en">Your money, <em>without borders</em></span></h1>
-      <p class="lead"><span class="es">Convierte más de 150 divisas, mira cómo evolucionan y compara 4 fuentes. Rápido, claro y siempre a mano.</span><span class="en">Convert 150+ currencies, see how they move and compare 4 sources. Fast, clear and always at hand.</span></p>
+      <p class="eyebrow"><span class="es">Extensión para Chrome · App para Windows</span><span class="en">Chrome extension · Windows app</span></p>
+      <h1><span class="es">Tu dinero,<br><em>sin fronteras.</em></span><span class="en">Your money,<br><em>without borders.</em></span></h1>
+      <p class="lead"><span class="es">Convierte más de 150 divisas, calcula el precio final con tu margen y comprueba de un vistazo qué fuente da la mejor tasa. Sin cuentas, sin anuncios de terceros y con tus datos en tu equipo.</span><span class="en">Convert 150+ currencies, work out the final price with your margin and see at a glance which source gives the best rate. No accounts, no third-party ads, and your data stays on your device.</span></p>
       <div class="btns">
-        <a class="btn primary" href="#video"><span class="es">▶ Ver cómo funciona</span><span class="en">▶ See how it works</span></a>
-        <a class="btn ghost" href="#descargar">⬇ Windows</a>
-        <a class="btn ghost" href="soporte.html"><span class="es">Contactar con soporte</span><span class="en">Contact support</span></a>
+        <a class="btn primary" href="#demo"><span class="es">Ver cómo funciona</span><span class="en">See how it works</span></a>
+        <a class="btn ghost" href="#windows"><span class="es">Descargar para Windows</span><span class="en">Download for Windows</span></a>
       </div>
-      <div class="chips">
-        <span>150+ <span class="es">divisas</span><span class="en">currencies</span></span>
-        <span class="es">Gratis</span><span class="en">Free</span>
-        <span class="es">Sin registro</span><span class="en">No sign-up</span>
-        <span>6 <span class="es">idiomas</span><span class="en">languages</span></span>
-      </div>
+      <ul class="facts">
+        <li><span class="es">150+ divisas</span><span class="en">150+ currencies</span></li>
+        <li><span class="es">4 fuentes de tasas</span><span class="en">4 rate sources</span></li>
+        <li><span class="es">Gratis, sin cuenta</span><span class="en">Free, no account</span></li>
+        <li><span class="es">6 idiomas</span><span class="en">6 languages</span></li>
+      </ul>
     </div>
-    <img class="hero-shot" src="assets/shot-convertir.jpg" alt="Divisa&amp;Go" width="1280" height="800">
+    <div class="stack">
+      <div class="frame reveal"><img src="assets/app-convertir.png" width="680" height="1200" alt="Divisa&amp;Go convirtiendo 1000 USD a EUR" fetchpriority="high"></div>
+      <div class="frame back reveal"><img src="assets/app-calculadora.png" width="680" height="1200" alt="" loading="lazy"></div>
+    </div>
   </div>
 </header>
 
-<section id="video">
+<section id="margenes">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">01 · Calculadora</span><span class="en">01 · Calculator</span></p>
+      <h2><span class="es">Del precio neto al precio final, <em>sin hacer cuentas.</em></span><span class="en">From net to final price, <em>no maths required.</em></span></h2>
+      <p class="sub"><span class="es">Pensada para quien añade un margen a un precio neto. Y al revés: si ya tienes el precio final, te dice qué margen te queda.</span><span class="en">Built for anyone who adds a margin to a net price. And the other way round: if you already have the final price, it tells you the margin you are left with.</span></p>
+      <ol class="steps">
+        <li><strong><span class="es">Escribe el precio neto</span><span class="en">Type the net price</span></strong><span class="es">Admite 1.000,50, 1,000.50 o 1 000 sin que tengas que pensarlo.</span><span class="en">It reads 1.000,50, 1,000.50 or 1 000 without you thinking about it.</span></li>
+        <li><strong><span class="es">Toca +20 %, +50 % o el tuyo</span><span class="en">Tap +20%, +50% or your own</span></strong><span class="es">Tus porcentajes se guardan y se editan con la tuerca.</span><span class="en">Your percentages are saved and editable with the gear.</span></li>
+        <li><strong><span class="es">Copia el precio, no tu margen</span><span class="en">Copy the price, not your margin</span></strong><span class="es">«Copiar para enviar» deja solo el precio final y su conversión.</span><span class="en">“Copy to send” leaves only the final price and its conversion.</span></li>
+      </ol>
+    </div>
+    <div class="frame reveal"><img src="assets/app-calculadora.png" width="680" height="1200" alt="Calculadora con margen del 20 % sobre 1200" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="alt" id="fuentes">
+  <div class="wrap split flip">
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">02 · Fuentes</span><span class="en">02 · Sources</span></p>
+      <h2><span class="es">Cuatro fuentes, <em>una respuesta clara.</em></span><span class="en">Four sources, <em>one clear answer.</em></span></h2>
+      <p class="sub"><span class="es">Elige de dónde sale la tasa y todo el cálculo —conversión, calculadora y gráfico— la usa. Un semáforo te dice si hay una mejor.</span><span class="en">Choose where the rate comes from and everything — conversion, calculator and chart — uses it. A traffic light tells you whether a better one exists.</span></p>
+      <dl class="sources">
+        <div><dt>Wise <span class="tag"><span class="es">por defecto</span><span class="en">default</span></span></dt><dd><span class="es">Tasa de mercado casi en tiempo real y su histórico propio en el gráfico.</span><span class="en">Near real-time market rate and its own history in the chart.</span></dd></div>
+        <div><dt>Frankfurter</dt><dd><span class="es">Referencia diaria de bancos centrales, para 159 monedas.</span><span class="en">Daily central-bank reference, for 159 currencies.</span></dd></div>
+        <div><dt>Xe</dt><dd><span class="es">Tasa media de mercado, como segunda opinión.</span><span class="en">Mid-market rate, as a second opinion.</span></dd></div>
+        <div><dt>TradingView</dt><dd><span class="es">Cotización de mercado y futuros para metales y materias primas.</span><span class="en">Market quote and futures for metals and commodities.</span></dd></div>
+      </dl>
+    </div>
+    <div class="frame reveal"><img src="assets/app-fuentes.png" width="680" height="1200" alt="Evolución del par y referencias de mercado" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="mas-alla">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">03 · Más allá de las divisas</span><span class="en">03 · Beyond currencies</span></p>
+      <h2><span class="es">Cripto, metales <em>y materias primas.</em></span><span class="en">Crypto, metals <em>and commodities.</em></span></h2>
+      <p class="sub"><span class="es">Los precios del día en tu moneda, por gramo, onza o kilo. Cada valor se contrasta con una segunda fuente y, si no coinciden, te lo avisa.</span><span class="en">Today’s prices in your currency, per gram, ounce or kilo. Each value is checked against a second source and flagged if they disagree.</span></p>
+      <ul class="chips">
+        <li><span class="es">Oro</span><span class="en">Gold</span></li><li><span class="es">Plata</span><span class="en">Silver</span></li><li><span class="es">Platino</span><span class="en">Platinum</span></li><li><span class="es">Paladio</span><span class="en">Palladium</span></li>
+        <li><span class="es">Cobre</span><span class="en">Copper</span></li><li><span class="es">Petróleo WTI y Brent</span><span class="en">WTI and Brent crude</span></li><li>Bitcoin</li><li>Ethereum</li>
+      </ul>
+    </div>
+    <div class="frame reveal"><img src="assets/app-metales.png" width="680" height="1200" alt="Precios de oro, plata y otros metales en euros por gramo" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="alt" id="temas">
   <div class="wrap">
-    <div class="center">
-      <div class="kicker"><span class="es">Míralo en acción</span><span class="en">See it in action</span></div>
-      <h2><span class="es">Divisa&amp;Go en <em>menos de 2 minutos</em></span><span class="en">Divisa&amp;Go in <em>under 2 minutes</em></span></h2>
-      <p class="sub"><span class="es">Así se convierte una cantidad, se consulta la evolución y se comparan las fuentes.</span><span class="en">How to convert an amount, check the trend and compare the sources.</span></p>
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">04 · A tu gusto</span><span class="en">04 · Your way</span></p>
+      <h2><span class="es">Cinco temas, <em>el mismo cuidado.</em></span><span class="en">Five themes, <em>the same care.</em></span></h2>
+    </div>
+    <div class="themes">
+      <figure class="reveal"><div class="frame"><img src="assets/app-convertir.png" width="680" height="1200" alt="" loading="lazy"></div><figcaption><b>Acero</b><span class="es">Claro y sereno, para la oficina.</span><span class="en">Light and calm, for the office.</span></figcaption></figure>
+      <figure class="reveal"><div class="frame"><img src="assets/app-marino.png" width="680" height="1200" alt="" loading="lazy"></div><figcaption><b>Marino</b><span class="es">Oscuro y azul, para trabajar de noche.</span><span class="en">Dark and blue, for working at night.</span></figcaption></figure>
+      <figure class="reveal"><div class="frame"><img src="assets/app-noche.png" width="680" height="1200" alt="" loading="lazy"></div><figcaption><b>Noche</b><span class="es">Y también Día y Rosa, si lo prefieres.</span><span class="en">And Day and Pink, if you prefer.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="night" id="demo">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">Recorrido</span><span class="en">Walkthrough</span></p>
+      <h2><span class="es">Dos minutos <em>y lo tienes.</em></span><span class="en">Two minutes <em>and you’re set.</em></span></h2>
+      <p class="sub"><span class="es">Una conversión, el gráfico y la comparación de fuentes. La demo corresponde a una versión anterior de la interfaz.</span><span class="en">A conversion, the chart and the source comparison. The demo shows an earlier version of the interface.</span></p>
     </div>
     <div class="vlang"><div class="lang" role="group" aria-label="Video language">
       <button type="button" data-vlang="es" aria-pressed="true">Español</button>
       <button type="button" data-vlang="en" aria-pressed="false">English</button>
     </div></div>
-    <div class="video-card">
-      <video id="demo" controls preload="metadata" playsinline poster="assets/shot-convertir.jpg">
+    <div class="video-card reveal">
+      <video id="demo-video" controls preload="metadata" playsinline poster="assets/shot-convertir.jpg">
         <source id="demo-src" src="assets/demo-es.mp4" type="video/mp4">
       </video>
     </div>
   </div>
 </section>
 
-<section class="alt" id="funciones">
-  <div class="wrap">
-    <div class="center">
-      <div class="kicker"><span class="es">Todo lo que necesitas</span><span class="en">Everything you need</span></div>
-      <h2><span class="es">Funciones <em>pensadas para ti</em></span><span class="en">Features <em>made for you</em></span></h2>
-      <p class="sub"><span class="es">Sencilla por fuera, completa por dentro.</span><span class="en">Simple outside, complete inside.</span></p>
+<section id="windows">
+  <div class="wrap dl">
+    <div class="reveal">
+      <p class="eyebrow">Windows</p>
+      <h2><span class="es">También en <em>tu escritorio.</em></span><span class="en">Also on <em>your desktop.</em></span></h2>
+      <p class="sub"><span class="es">La misma Divisa&amp;Go en su propia ventana, con una chincheta para mantenerla siempre visible.</span><span class="en">The same Divisa&amp;Go in its own window, with a pin to keep it always on top.</span></p>
+      <div class="btns"><a class="btn primary" href="downloads/Divisa-and-Go-Setup-1.0.0.exe" download><span class="es">Descargar para Windows</span><span class="en">Download for Windows</span></a></div>
+      <p class="muted" style="margin:16px 0 0;font-size:14px"><span class="es">Versión 1.0.0 · 104 MB · Windows 10 y 11 (64 bits) · Gratis</span><span class="en">Version 1.0.0 · 104 MB · Windows 10 and 11 (64-bit) · Free</span></p>
     </div>
-    <div class="grid">
-      <div class="card"><div class="ico">🧮</div><h3><span class="es">Calculadora de divisas</span><span class="en">Currency calculator</span></h3><p><span class="es">Suma, resta, multiplica y calcula porcentajes con la conversión en vivo a tu moneda.</span><span class="en">Add, subtract, multiply and work out percentages with live conversion to your currency.</span></p></div>
-      <div class="card"><div class="ico">₿</div><h3><span class="es">Sección Cripto</span><span class="en">Crypto section</span></h3><p><span class="es">Bitcoin, Ethereum y otras 10 monedas en tu divisa, con variación de 24 h y comparación entre 4 fuentes.</span><span class="en">Bitcoin, Ethereum and 10 more coins in your currency, with 24 h change and a 4-source comparison.</span></p></div>
-      <div class="card"><div class="ico">📌</div><h3><span class="es">Fíjala o ánclala</span><span class="en">Pin it or dock it</span></h3><p><span class="es">Ventana flotante que se queda abierta, o panel lateral anclado a la derecha de Chrome.</span><span class="en">A floating window that stays open, or a side panel docked to the right of Chrome.</span></p></div>
-      <div class="card"><div class="ico">💱</div><h3><span class="es">Conversión al instante</span><span class="en">Instant conversion</span></h3><p><span class="es">Más de 150 monedas con banderas y nombres en tu idioma. Busca por país, nombre o código.</span><span class="en">150+ currencies with flags and names in your language. Search by country, name or code.</span></p></div>
-      <div class="card"><div class="ico">📈</div><h3><span class="es">Evolución de la moneda</span><span class="en">Currency trends</span></h3><p><span class="es">De 1 semana a 5 años, con mínimo, máximo y % de cambio para elegir el mejor momento.</span><span class="en">From 1 week to 5 years, with low, high and % change to pick the best moment.</span></p></div>
-      <div class="card"><div class="ico">🔍</div><h3><span class="es">4 fuentes a la vez</span><span class="en">4 sources at once</span></h3><p><span class="es">Compara BCE, Wise, Xe y TradingView, actualizadas cada 30 minutos.</span><span class="en">Compare ECB, Wise, Xe and TradingView, refreshed every 30 minutes.</span></p></div>
-      <div class="card"><div class="ico">⭐</div><h3><span class="es">Favoritos con copia</span><span class="en">Favorites with backup</span></h3><p><span class="es">Guarda tus monedas favoritas y expórtalas o impórtalas como copia de seguridad.</span><span class="en">Save your favorite currencies and export or import them as a backup.</span></p></div>
-      <div class="card"><div class="ico">🎨</div><h3><span class="es">Tres temas</span><span class="en">Three themes</span></h3><p><span class="es">Rosa, Día y Noche, para que se vea como más te guste.</span><span class="en">Pink, Day and Night, so it looks the way you like.</span></p></div>
-      <div class="card"><div class="ico">🌍</div><h3><span class="es">6 idiomas</span><span class="en">6 languages</span></h3><p><span class="es">Español, inglés, portugués, francés, alemán e italiano, con tutorial de 30 segundos.</span><span class="en">Spanish, English, Portuguese, French, German and Italian, with a 30-second tutorial.</span></p></div>
-    </div>
-  </div>
-</section>
-
-<section id="descargar">
-  <div class="wrap">
-    <div class="center">
-      <div class="kicker"><span class="es">Aplicación para Windows</span><span class="en">Windows app</span></div>
-      <h2><span class="es">También en <em>tu escritorio</em></span><span class="en">Also on <em>your desktop</em></span></h2>
-      <p class="sub"><span class="es">La misma Divisa&amp;Go en su propia ventana de Windows: calculadora, gráficos, 4 fuentes y cripto, sin abrir el navegador.</span><span class="en">The same Divisa&amp;Go in its own Windows window: calculator, charts, 4 sources and crypto, without opening the browser.</span></p>
-      <a class="btn primary" href="downloads/Divisa-and-Go-Setup-1.0.0.exe" download>⬇ <span class="es">Descargar para Windows</span><span class="en">Download for Windows</span></a>
-      <p class="muted" style="margin:14px 0 0;color:var(--muted);font-size:14px"><span class="es">Versión 1.0.0 · 104 MB · Windows 10 y 11 (64 bits) · Gratis</span><span class="en">Version 1.0.0 · 104 MB · Windows 10 and 11 (64-bit) · Free</span></p>
-    </div>
-    <div style="max-width:760px;margin:30px auto 0">
+    <div class="reveal">
       <details><summary><span class="es">Windows muestra un aviso al instalar, ¿es seguro?</span><span class="en">Windows shows a warning when installing. Is it safe?</span></summary><p><span class="es">El instalador aún no tiene firma digital de pago, así que Windows SmartScreen puede decir «Windows protegió su PC». Pulsa <strong>Más información</strong> y después <strong>Ejecutar de todas formas</strong>. Para comprobar que el archivo es el original, compara su huella SHA-256 con esta: <code style="word-break:break-all">d9cf2656a3cbbd0b3e890c59e7b44fee7adddb8db97d1aa43215592153ca9961</code></span><span class="en">The installer does not yet carry a paid digital signature, so Windows SmartScreen may say “Windows protected your PC”. Click <strong>More info</strong> and then <strong>Run anyway</strong>. To check the file is the original, compare its SHA-256 fingerprint with this one: <code style="word-break:break-all">d9cf2656a3cbbd0b3e890c59e7b44fee7adddb8db97d1aa43215592153ca9961</code></span></p></details>
-      <details><summary><span class="es">¿Qué incluye la versión de escritorio?</span><span class="en">What does the desktop version include?</span></summary><p><span class="es">Todo lo de la extensión: conversión de más de 150 divisas, calculadora, gráficos de evolución, comparación de 4 fuentes, sección Cripto, temas, 6 idiomas y copia de seguridad de favoritos. Además, la chincheta mantiene la ventana siempre por encima de las demás. Tus datos se guardan solo en tu equipo.</span><span class="en">Everything in the extension: conversion of 150+ currencies, calculator, trend charts, 4-source comparison, Crypto section, themes, 6 languages and favorites backup. Plus, the pin keeps the window always on top of others. Your data is stored only on your computer.</span></p></details>
+      <details><summary><span class="es">¿Qué incluye la versión de escritorio?</span><span class="en">What does the desktop version include?</span></summary><p><span class="es">Conversión de más de 150 divisas, calculadora, gráficos de evolución, comparación de fuentes, cripto, temas, 6 idiomas y copia de seguridad de favoritos. Tus datos se guardan solo en tu equipo.</span><span class="en">Conversion of 150+ currencies, calculator, trend charts, source comparison, crypto, themes, 6 languages and favorites backup. Your data is stored only on your computer.</span></p></details>
+      <details><summary><span class="es">¿Y en Chrome?</span><span class="en">And in Chrome?</span></summary><p><span class="es">La extensión se instala desde la Chrome Web Store. Si buscas ayuda o tienes una idea, escríbenos desde la página de soporte.</span><span class="en">The extension installs from the Chrome Web Store. If you need help or have an idea, write to us from the support page.</span></p></details>
     </div>
   </div>
 </section>
 
-<section id="capturas">
+<section class="alt" id="privacidad">
   <div class="wrap">
-    <div class="center">
-      <div class="kicker"><span class="es">Capturas</span><span class="en">Screenshots</span></div>
-      <h2><span class="es">Así se <em>ve Divisa&amp;Go</em></span><span class="en">This is <em>Divisa&amp;Go</em></span></h2>
-      <p class="sub"><span class="es">Pulsa una imagen para verla en grande.</span><span class="en">Click an image to enlarge it.</span></p>
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">Privacidad</span><span class="en">Privacy</span></p>
+      <h2><span class="es">Tus datos se quedan <em>contigo.</em></span><span class="en">Your data stays <em>with you.</em></span></h2>
     </div>
-    <div class="gallery">
-      <button type="button" data-full="assets/shot-convertir.jpg"><img loading="lazy" src="assets/thumb-convertir.jpg" alt="Conversión / Conversion"></button>
-      <button type="button" data-full="assets/shot-calculadora.jpg"><img loading="lazy" src="assets/thumb-calculadora.jpg" alt="Calculadora / Calculator"></button>
-      <button type="button" data-full="assets/shot-evolucion.jpg"><img loading="lazy" src="assets/thumb-evolucion.jpg" alt="Evolución / Trends"></button>
-      <button type="button" data-full="assets/shot-comparar.jpg"><img loading="lazy" src="assets/thumb-comparar.jpg" alt="4 fuentes / 4 sources"></button>
-      <button type="button" data-full="assets/shot-cripto.jpg"><img loading="lazy" src="assets/thumb-cripto.jpg" alt="Cripto / Crypto"></button>
-      <button type="button" data-full="assets/shot-buscar.jpg"><img loading="lazy" src="assets/thumb-buscar.jpg" alt="Búsqueda / Search"></button>
-      <button type="button" data-full="assets/shot-temas.jpg"><img loading="lazy" src="assets/thumb-temas.jpg" alt="Temas / Themes"></button>
-      <button type="button" data-full="assets/shot-tutorial.jpg"><img loading="lazy" src="assets/thumb-tutorial.jpg" alt="Tutorial"></button>
+    <div class="trio reveal">
+      <div><h3><span class="es">Sin cuenta</span><span class="en">No account</span></h3><p><span class="es">No hay registro, analítica ni seguimiento propio. Tus favoritos, márgenes y ajustes viven en tu navegador.</span><span class="en">No sign-up, analytics or tracking of our own. Your favorites, margins and settings live in your browser.</span></p></div>
+      <div><h3><span class="es">Solo el par de monedas</span><span class="en">Only the currency pair</span></h3><p><span class="es">A las fuentes se les pide el par o el producto. Nunca el importe que escribes ni tus márgenes.</span><span class="en">Sources are asked for the pair or product. Never the amount you type or your margins.</span></p></div>
+      <div><h3><span class="es">Copias en tu equipo</span><span class="en">Backups on your device</span></h3><p><span class="es">Una copia automática al día, dentro del navegador, que puedes restaurar o exportar cuando quieras.</span><span class="en">One automatic backup a day, inside your browser, that you can restore or export whenever you like.</span></p></div>
     </div>
+    <p class="muted reveal" style="margin-top:28px;font-size:15px"><a href="soporte.html#privacidad"><span class="es">Leer la política de privacidad completa</span><span class="en">Read the full privacy policy</span></a></p>
   </div>
 </section>
 
-<section class="support" id="ayuda">
+<section id="licencia">
   <div class="wrap">
-    <div class="kicker" style="color:#ffe14d"><span class="es">¿Necesitas ayuda?</span><span class="en">Need help?</span></div>
-    <h2><span class="es">Estamos <em style="-webkit-text-fill-color:#ffe14d;color:#ffe14d">para ayudarte</em></span><span class="en">We're <em style="-webkit-text-fill-color:#ffe14d;color:#ffe14d">here to help</em></span></h2>
-    <p><span class="es">Contacto, preguntas frecuentes y política de privacidad en la página de soporte.</span><span class="en">Contact, frequently asked questions and the privacy policy are on the support page.</span></p>
-    <a class="btn primary" href="soporte.html">🛟 <span class="es">Ir a soporte</span><span class="en">Go to support</span></a>
-  </div>
-</section>
-
-<section class="alt" id="mas">
-  <div class="wrap" style="max-width:820px">
-    <div class="panel more">
-        <h3>🧩 <span class="es">También disponible</span><span class="en">Also available</span></h3>
-        <p><span class="es"><b>FullPage Saver</b>, mi otra extensión para Chrome. Descúbrela en la Chrome Web Store.</span><span class="en"><b>FullPage Saver</b>, my other Chrome extension. Find it on the Chrome Web Store.</span></p>
-        <a class="btn primary" style="padding:12px 22px;font-size:16px" href="https://chromewebstore.google.com/detail/igjphghlkmidddmnmlmdnhnepehpoena" target="_blank" rel="noopener"><span class="es">Descubrir FullPage Saver</span><span class="en">Discover FullPage Saver</span></a>
+    <div class="reveal">
+      <p class="eyebrow"><span class="es">Licencia</span><span class="en">License</span></p>
+      <h2><span class="es">Gratis para ti, para tu equipo <em>y para tu empresa.</em></span><span class="en">Free for you, your team <em>and your company.</em></span></h2>
+      <p class="sub"><span class="es">Divisa&amp;Go se puede usar libremente, también en el trabajo. Solo las organizaciones en las que la usan más de 50 personas necesitan una licencia corporativa.</span><span class="en">Divisa&amp;Go can be used freely, at work too. Only organizations where more than 50 people use it need a corporate license.</span></p>
+    </div>
+    <div class="plans reveal">
+      <div class="plan">
+        <p class="label"><span class="es">Personas y equipos</span><span class="en">People and teams</span></p>
+        <p class="price"><span class="es">Gratis</span><span class="en">Free</span></p>
+        <p><span class="es">Uso personal y profesional, en empresas y organizaciones de hasta 50 personas. Sin registro ni caducidad.</span><span class="en">Personal and professional use, in companies and organizations of up to 50 people. No sign-up, no expiry.</span></p>
+        <a class="btn" href="#windows"><span class="es">Empezar</span><span class="en">Get started</span></a>
       </div>
+      <div class="plan dark">
+        <p class="label"><span class="es">Más de 50 personas</span><span class="en">More than 50 people</span></p>
+        <p class="price"><span class="es">Licencia corporativa</span><span class="en">Corporate license</span></p>
+        <p><span class="es">Obligatoria cuando más de 50 personas de una organización usan la aplicación. Escríbenos y la preparamos.</span><span class="en">Mandatory when more than 50 people in an organization use the app. Write to us and we will set it up.</span></p>
+        <a class="btn" href="mailto:empresademkor@gmail.com?subject=Licencia%20corporativa%20Divisa%26Go"><span class="es">Solicitar licencia</span><span class="en">Request a license</span></a>
+      </div>
+    </div>
+    <p class="muted reveal" style="margin-top:24px;font-size:15px"><a href="licencia.html"><span class="es">Leer el texto completo de la licencia</span><span class="en">Read the full license text</span></a></p>
   </div>
 </section>
 
 <footer>
-  <div class="foot-links">
-    <a href="index.html"><span class="es">Inicio</span><span class="en">Home</span></a>
-    <a href="soporte.html"><span class="es">Soporte</span><span class="en">Support</span></a>
-    <a href="soporte.html#privacidad"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
-    <a href="licencia.html"><span class="es">Licencia</span><span class="en">License</span></a>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="index.html"><span class="es">Inicio</span><span class="en">Home</span></a>
+      <a href="soporte.html"><span class="es">Soporte</span><span class="en">Support</span></a>
+      <a href="soporte.html#privacidad"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+      <a href="licencia.html"><span class="es">Licencia</span><span class="en">License</span></a>
+      <a href="https://chromewebstore.google.com/detail/igjphghlkmidddmnmlmdnhnepehpoena" target="_blank" rel="noopener"><span class="es">También: FullPage Saver</span><span class="en">Also: FullPage Saver</span></a>
+    </div>
+    <span class="es">Desarrollado por Demkor Consultants · Desarrollador principal: Danny Medina Coronel</span>
+    <span class="en">Developed by Demkor Consultants · Lead developer: Danny Medina Coronel</span>
   </div>
-  <span class="es">Desarrollado por Demkor Consultants · Desarrollador principal: Danny Medina Coronel</span>
-  <span class="en">Developed by Demkor Consultants · Lead developer: Danny Medina Coronel</span>
 </footer>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><img alt=""></div>
 
 <script>
 const root = document.documentElement;
-const video = document.querySelector("#demo");
+const video = document.querySelector("#demo-video");
 const videoSrc = document.querySelector("#demo-src");
-function setLang(lang) {
-  root.lang = lang;
-  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
-  try { localStorage.setItem("divisagoSiteLang", lang); } catch {}
-  setVideo(lang);
-}
 function setVideo(lang) {
   document.querySelectorAll("[data-vlang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.vlang === lang)));
   const wanted = `assets/demo-${lang}.mp4`;
@@ -283,21 +222,28 @@ function setVideo(lang) {
     if (wasPlaying) video.play().catch(() => {});
   }
 }
+function setLang(lang) {
+  root.lang = lang;
+  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  try { localStorage.setItem("divisagoSiteLang", lang); } catch {}
+  setVideo(lang);
+}
 document.querySelectorAll("[data-lang]").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
 document.querySelectorAll("[data-vlang]").forEach((b) => b.addEventListener("click", () => setVideo(b.dataset.vlang)));
-
 let initial = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
 try { initial = localStorage.getItem("divisagoSiteLang") || initial; } catch {}
 setLang(initial);
 
-const box = document.querySelector("#lightbox");
-const boxImg = box.querySelector("img");
-document.querySelectorAll(".gallery button").forEach((b) => b.addEventListener("click", () => {
-  boxImg.src = b.dataset.full;
-  box.classList.add("open");
-}));
-box.addEventListener("click", () => box.classList.remove("open"));
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") box.classList.remove("open"); });
+// Entrada suave de cada bloque al llegar a él.
+const reveals = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add("in"); observer.unobserve(entry.target); }
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  reveals.forEach((element) => observer.observe(element));
+} else {
+  reveals.forEach((element) => element.classList.add("in"));
+}
 </script>
 </body>
 </html>
